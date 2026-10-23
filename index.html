@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Julian Zaidan – Web Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#ECEFF3; --surface:#F7F8FA; --ink:#172033; --muted:#505a70; --line:#C9CFDA;
+  --blue:#2438D6; --yellow:#FFD23F; --on-yellow:#172033;
+  --display:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;
+  --text:"Source Serif 4",Georgia,"Times New Roman",serif;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--bg:#10141F;--surface:#171C2A;--ink:#E8EBF2;--muted:#A3ACC0;--line:#2B3347;--blue:#8E9BFF;}
+}
+:root[data-theme="dark"]{--bg:#10141F;--surface:#171C2A;--ink:#E8EBF2;--muted:#A3ACC0;--line:#2B3347;--blue:#8E9BFF;}
+html{scroll-padding-top:calc(72px + env(safe-area-inset-top,0px));scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--text);font-size:1.125rem;line-height:1.65}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:10}
+a{color:var(--blue);text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:2px}
+.wrap{max-width:62rem;margin:0 auto;padding:0 1.5rem}
+
+/* nav */
+header.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;height:64px}
+.brand{font-family:var(--display);font-weight:800;font-size:1.15rem;color:var(--ink);text-decoration:none;white-space:nowrap}
+.nav ul{display:flex;gap:.25rem;list-style:none;margin:0;padding:0;overflow-x:auto}
+.nav li a{display:block;padding:.45rem .8rem;font-family:var(--display);font-weight:500;font-size:1rem;color:var(--muted);text-decoration:none;border-bottom:3px solid transparent}
+.nav li a:hover{color:var(--ink)}
+.nav li a[aria-current="true"]{color:var(--ink);border-bottom-color:var(--yellow)}
+
+/* hero */
+.hero{padding:5rem 0 4.5rem;display:grid;grid-template-columns:1fr 15rem;gap:3rem;align-items:center}
+.hero h1{font-family:var(--display);font-weight:800;font-size:clamp(2.6rem,7vw,5.2rem);line-height:1;letter-spacing:-.025em;margin:0 0 1.5rem}
+.hero p{max-width:34rem;margin:0 0 1.75rem;color:var(--muted)}
+.hero .status{display:inline-block;background:var(--yellow);color:var(--on-yellow);font-family:var(--display);font-weight:500;font-size:.98rem;padding:.35rem .8rem}
+.portrait{aspect-ratio:4/5;background:var(--yellow);color:var(--on-yellow);display:grid;place-items:center;font-family:var(--display);font-weight:800;font-size:4.5rem;box-shadow:12px 12px 0 var(--ink)}
+
+/* sections */
+section{padding:4rem 0;border-top:1px solid var(--line)}
+h2{font-family:var(--display);font-weight:800;font-size:clamp(1.8rem,4vw,2.5rem);line-height:1.1;letter-spacing:-.015em;margin:0 0 2rem}
+.cols{display:grid;grid-template-columns:14rem 1fr;gap:3rem}
+.cols>h2{margin:0}
+.prose p{margin:0 0 1.2rem;max-width:40rem}
+.prose p:last-child{margin-bottom:0}
+
+/* proyek */
+.projects{list-style:none;margin:0;padding:0}
+.projects li{display:grid;grid-template-columns:5rem 1fr;gap:1rem 1.5rem;padding:1.6rem 0;border-bottom:1px solid var(--line)}
+.projects li:first-child{padding-top:0}
+.projects time{font-family:var(--display);font-weight:500;color:var(--muted);padding-top:.25rem}
+.projects h3{font-family:var(--display);font-weight:800;font-size:1.45rem;line-height:1.2;margin:0 0 .4rem}
+.projects h3 a{color:var(--ink);text-decoration-thickness:2px;text-decoration-color:var(--yellow)}
+.projects h3 a:hover{color:var(--blue)}
+.projects p{margin:0 0 .5rem;max-width:38rem}
+.projects .stack{font-family:var(--display);font-size:.95rem;color:var(--muted)}
+
+/* keahlian & pengalaman */
+.skills{display:grid;grid-template-columns:1fr 1fr;gap:2rem 3rem;margin:0 0 3rem}
+.skills h3,.jobs h3{font-family:var(--display);font-weight:800;font-size:1.2rem;margin:0 0 .5rem}
+.skills p{margin:0;color:var(--muted)}
+.jobs{list-style:none;margin:0;padding:0;border-left:3px solid var(--ink)}
+.jobs li{padding:0 0 1.8rem 1.5rem;position:relative}
+.jobs li:last-child{padding-bottom:0}
+.jobs li::before{content:"";position:absolute;left:-9px;top:.55rem;width:15px;height:15px;background:var(--yellow);border:3px solid var(--ink)}
+.jobs .when{font-family:var(--display);color:var(--muted);font-size:.98rem}
+.jobs p{margin:.2rem 0 0;max-width:36rem}
+
+/* kontak */
+.contact .big{font-family:var(--display);font-weight:800;font-size:clamp(1.5rem,4.6vw,2.8rem);line-height:1.15;word-break:break-word}
+.contact ul{list-style:none;padding:0;margin:2rem 0 0;display:flex;gap:1.5rem;flex-wrap:wrap;font-family:var(--display)}
+footer{padding:2rem 0 3rem;border-top:1px solid var(--line);color:var(--muted);font-family:var(--display);font-size:.95rem}
+footer .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+footer button{font:inherit;color:var(--blue);background:none;border:0;padding:0;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+
+@media (max-width:760px){
+  body{font-size:1.05rem}
+  .nav .wrap{height:auto;padding-top:.6rem;padding-bottom:.4rem;flex-direction:column;align-items:flex-start;gap:.2rem}
+  .nav ul{width:100%;margin-left:-.8rem}
+  html{scroll-padding-top:calc(100px + env(safe-area-inset-top,0px))}
+  .hero{grid-template-columns:1fr;padding:3rem 0;gap:2.5rem}
+  .portrait{width:9rem;order:-1;font-size:3rem;box-shadow:8px 8px 0 var(--ink)}
+  .cols{grid-template-columns:1fr;gap:0}
+  .cols>h2{margin-bottom:1.5rem}
+  .projects li{grid-template-columns:1fr;gap:.2rem}
+  .skills{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#beranda">Jidjid</a>
+    <nav aria-label="Navigasi utama">
+      <ul>
+        <li><a href="#beranda" aria-current="true">Beranda</a></li>
+        <li><a href="#tentang">Tentang</a></li>
+        <li><a href="#proyek">Proyek</a></li>
+        <li><a href="#keahlian">Keahlian</a></li>
+        <li><a href="#kontak">Kontak</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <div class="hero" id="beranda">
+      <div>
+        <h1>Saya Jidjid, pengembang web di Indonesia.</h1>
+        <p>Saya membangun situs dan aplikasi yang cepat dibuka, mudah dipakai, dan gampang dirawat oleh timnya setelah saya pergi.</p>
+        <span class="status">Terbuka untuk proyek freelance</span>
+      </div>
+      <div class="portrait" role="img" aria-label="Foto profil Raka Pratama (ganti dengan fotomu)">RP</div>
+    </div>
+  </div>
+
+  <section id="tentang">
+    <div class="wrap cols">
+      <h2>Tentang saya</h2>
+      <div class="prose">
+        <p>Saya mulai membuat situs web waktu kuliah, untuk toko kecil milik keluarga. Dari situ saya belajar bahwa situs yang bagus adalah situs yang dipakai pemiliknya setiap hari, bukan yang paling ramai animasinya.</p>
+        <p>Sekarang saya mengerjakan front-end dan sedikit back-end untuk UMKM, komunitas, dan startup kecil. Saya suka bagian awal proyek: duduk bersama klien, mencari tahu apa yang sebenarnya dibutuhkan, lalu memangkas fitur sampai tinggal yang penting.</p>
+        <p>Di luar kerja, saya mengutak-atik keyboard mekanik dan mencatat resep kopi yang gagal.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="proyek">
+    <div class="wrap cols">
+      <h2>Proyek</h2>
+      <ol class="projects">
+        <li>
+          <time datetime="2026">2026</time>
+          <div>
+            <h3><a href="#kontak">Kasir Warung</a></h3>
+            <p>Aplikasi kasir berbasis web untuk warung dan kedai kecil. Berjalan tanpa internet, lalu menyinkronkan data saat sinyal kembali.</p>
+            <span class="stack">React, IndexedDB, Node.js</span>
+          </div>
+        </li>
+        <li>
+          <time datetime="2025">2025</time>
+          <div>
+            <h3><a href="#kontak">Peta Bank Sampah</a></h3>
+            <p>Peta interaktif lokasi bank sampah di Jabodetabek, dibuat bersama komunitas relawan. Dipakai sekitar 3.000 orang per bulan.</p>
+            <span class="stack">Leaflet, PostgreSQL, Express</span>
+          </div>
+        </li>
+        <li>
+          <time datetime="2024">2024</time>
+          <div>
+            <h3><a href="#kontak">Situs Katalog Batik Lokal</a></h3>
+            <p>Situs katalog dengan pemesanan lewat WhatsApp untuk perajin batik. Halaman memuat dalam kurang dari dua detik di jaringan 3G.</p>
+            <span class="stack">Astro, Tailwind CSS</span>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="keahlian">
+    <div class="wrap cols">
+      <h2>Keahlian dan pengalaman</h2>
+      <div>
+        <div class="skills">
+          <div><h3>Front-end</h3><p>HTML, CSS, JavaScript, React, Astro. Aksesibilitas dan performa di perangkat murah.</p></div>
+          <div><h3>Back-end</h3><p>Node.js, Express, PostgreSQL, REST API. Dasar-dasar deployment di VPS.</p></div>
+          <div><h3>Desain</h3><p>Figma, tipografi, tata letak. Saya membuat sketsa kasar sebelum menyentuh kode.</p></div>
+          <div><h3>Cara kerja</h3><p>Git, code review, dokumentasi singkat, kabar progres tiap minggu.</p></div>
+        </div>
+        <ul class="jobs">
+          <li><div class="when">2024 – sekarang</div><h3>Freelance</h3><p>Mengerjakan situs dan aplikasi untuk klien UMKM dan komunitas.</p></li>
+          <li><div class="when">2022 – 2024</div><h3>Junior Developer, Studio Digital Nusa</h3><p>Membangun situs perusahaan dan dashboard internal untuk belasan klien.</p></li>
+          <li><div class="when">2018 – 2022</div><h3>S1 Teknik Informatika</h3><p>Skripsi tentang aplikasi web yang tetap berfungsi tanpa koneksi internet.</p></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="kontak" class="contact">
+    <div class="wrap">
+      <h2>Kontak</h2>
+      <p>Punya proyek atau sekadar ingin ngobrol? Kirim email, biasanya saya balas dalam dua hari kerja.</p>
+      <a class="big" href="mailto:halo@namakamu.id">halo@namakamu.id</a>
+      <ul>
+        <li><a href="https://github.com/">GitHub</a></li>
+        <li><a href="https://linkedin.com/">LinkedIn</a></li>
+        <li><a href="https://instagram.com/">Instagram</a></li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Julian Zaidan</span>
+    <button type="button" id="theme">Ganti tema</button>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var links=[].slice.call(document.querySelectorAll('.nav li a'));
+  var map={};
+  links.forEach(function(a){map[a.getAttribute('href').slice(1)]=a});
+  var ids=Object.keys(map);
+  function update(){
+    var y=window.scrollY+140, cur=ids[0];
+    ids.forEach(function(id){var el=document.getElementById(id);if(el&&el.offsetTop<=y)cur=id});
+    if(window.innerHeight+window.scrollY>=document.body.scrollHeight-4)cur=ids[ids.length-1];
+    links.forEach(function(a){a.removeAttribute('aria-current')});
+    map[cur].setAttribute('aria-current','true');
+  }
+  window.addEventListener('scroll',update,{passive:true});
+  window.addEventListener('resize',update);
+  update();
+
+  var root=document.documentElement;
+  try{var saved=localStorage.getItem('tema');if(saved)root.setAttribute('data-theme',saved)}catch(e){}
+  document.getElementById('theme').addEventListener('click',function(){
+    var dark=root.getAttribute('data-theme')==='dark'||(!root.getAttribute('data-theme')&&matchMedia('(prefers-color-scheme: dark)').matches);
+    var next=dark?'light':'dark';
+    root.setAttribute('data-theme',next);
+    try{localStorage.setItem('tema',next)}catch(e){}
+  });
+})();
+</script>
+</body>
+</html>
